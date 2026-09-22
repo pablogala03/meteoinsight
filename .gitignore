@@ -1,0 +1,27 @@
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Java / Maven
+backend/target/
+*.class
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Weathercloud / weather station data
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db

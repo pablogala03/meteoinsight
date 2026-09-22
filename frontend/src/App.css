@@ -1,0 +1,4131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eef4f8;
+  color: #1f2937;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* =========================
+   CABECERA
+   ========================= */
+
+header {
+  margin-bottom: 30px;
+  padding: 32px;
+  border-radius: 24px;
+  color: white;
+  background: linear-gradient(135deg, #0f4c81, #1976b9, #36a9e1);
+  box-shadow: 0 12px 30px rgba(15, 76, 129, 0.25);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: -1px;
+}
+
+header p {
+  margin: 8px 0 0;
+  font-size: 17px;
+  opacity: 0.9;
+}
+
+/* =========================
+   TIEMPO ACTUAL
+   ========================= */
+
+.current-weather {
+  background: white;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(15, 76, 129, 0.10);
+  border: 1px solid #e1eaf0;
+}
+
+.main-temperature {
+  margin-bottom: 35px;
+}
+
+.temperature {
+  display: block;
+  font-size: 68px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: #0f4c81;
+}
+
+.label {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* =========================
+   DETALLES METEOROLÓGICOS
+   ========================= */
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.detail {
+  padding: 20px;
+  border-radius: 16px;
+  background: #f4f8fb;
+  border: 1px solid #e3edf3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detail:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(15, 76, 129, 0.10);
+}
+
+.detail-label {
+  display: block;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.detail strong {
+  font-size: 20px;
+  color: #1e293b;
+}
+
+/* =========================
+   ESTADÍSTICAS
+   ========================= */
+
+.stats-section {
+  margin-top: 32px;
+}
+
+.stats-section h2,
+.chart-section h2,
+.recent-section h2 {
+  margin-bottom: 16px;
+  color: #0f4c81;
+  font-size: 22px;
+}
+
+.stats-container {
+  display: flex;
+  gap: 18px;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 24px;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid #e1eaf0;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 76, 129, 0.13);
+}
+
+.stat-card strong {
+  font-size: 30px;
+  color: #0f4c81;
+}
+
+/* =========================
+   GRÁFICA
+   ========================= */
+
+.chart-section {
+  margin-top: 32px;
+}
+
+.temperature-chart {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid #e1eaf0;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+/* =========================
+   ÚLTIMAS MEDICIONES
+   ========================= */
+
+.recent-section {
+  margin-top: 32px;
+}
+
+.recent-list {
+  background: white;
+  border-radius: 20px;
+  padding: 10px 25px;
+  border: 1px solid #e1eaf0;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+.recent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf2f5;
+}
+
+.recent-item:last-child {
+  border-bottom: none;
+}
+
+.recent-item strong {
+  margin-left: 30px;
+  color: #0f4c81;
+  font-size: 17px;
+}
+
+/* =========================
+   ÚLTIMA ACTUALIZACIÓN
+   ========================= */
+
+.last-update {
+  margin-top: 18px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: right;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+
+  .weather-details {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .app {
+    padding: 25px 16px;
+  }
+
+  header {
+    padding: 25px;
+  }
+
+  header h1 {
+    font-size: 34px;
+  }
+
+  .current-weather {
+    padding: 25px;
+  }
+
+  .temperature {
+    font-size: 56px;
+  }
+
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-container {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .recent-item strong {
+    margin-left: 0;
+  }
+
+  .last-update {
+    text-align: left;
+  }
+
+}
+.chart-section {
+  margin-top: 30px;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.chart-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.temperature-chart {
+  width: 100%;
+  height: 350px;
+}
+.chart-summary {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.chart-summary div {
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+
+  border: 1px solid #eef2f6;
+}
+
+.chart-summary span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.chart-summary strong {
+  font-size: 18px;
+
+  color: #101828;
+}
+/* ============================= */
+/* CABECERA                      */
+/* ============================= */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.dashboard-header p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 16px;
+}
+
+.station-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 16px;
+
+  background: #ecfdf3;
+  border: 1px solid #d1fae5;
+  border-radius: 30px;
+
+  color: #087443;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  background: #12b76a;
+  border-radius: 50%;
+
+  box-shadow: 0 0 0 4px rgba(18, 183, 106, 0.12);
+}
+
+
+/* ============================= */
+/* TIEMPO ACTUAL                 */
+/* ============================= */
+
+.current-weather {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fbff 100%
+  );
+
+  border-radius: 24px;
+
+  padding: 35px;
+
+  border: 1px solid #e7edf5;
+
+  box-shadow:
+    0 10px 35px rgba(16, 24, 40, 0.08);
+}
+
+.current-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.section-label {
+  display: block;
+
+  color: #667085;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.current-header h2 {
+  margin: 5px 0 0;
+
+  font-size: 24px;
+}
+
+.current-time {
+  padding: 8px 14px;
+
+  background: #f2f4f7;
+
+  border-radius: 10px;
+
+  color: #475467;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* ============================= */
+/* TEMPERATURA PRINCIPAL         */
+/* ============================= */
+
+.main-temperature {
+  position: relative;
+
+  margin-bottom: 35px;
+
+  padding: 25px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #fff7ed,
+    #fffaf5
+  );
+
+  border: 1px solid #fed7aa;
+}
+
+.temperature {
+  display: inline-block;
+
+  font-size: 72px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -3px;
+
+  color: #e8590c;
+}
+
+.temperature-unit {
+  display: inline-block;
+
+  margin-left: 5px;
+
+  font-size: 30px;
+  font-weight: 600;
+
+  color: #f97316;
+
+  vertical-align: top;
+
+  margin-top: 8px;
+}
+
+.main-temperature .label {
+  margin-top: 10px;
+
+  color: #9a3412;
+}
+
+
+/* ============================= */
+/* DATOS METEOROLÓGICOS         */
+/* ============================= */
+
+.weather-details {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 15px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px;
+
+  border-radius: 16px;
+
+  background: #f8fafc;
+
+  border: 1px solid #eef2f6;
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.detail:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(16, 24, 40, 0.08);
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: white;
+
+  font-size: 18px;
+}
+
+.detail-label {
+  display: block;
+
+  color: #667085;
+
+  margin-bottom: 5px;
+
+  font-size: 13px;
+}
+
+.detail strong {
+  font-size: 18px;
+
+  color: #101828;
+}
+
+
+/* ============================= */
+/* COLORES POR VARIABLE          */
+/* ============================= */
+
+.temperature-detail .detail-icon {
+  color: #2563eb;
+}
+
+.pressure-detail .detail-icon {
+  color: #7c3aed;
+}
+
+.wind-detail .detail-icon {
+  color: #0891b2;
+}
+
+.direction-detail .detail-icon {
+  color: #059669;
+}
+
+.rain-detail .detail-icon {
+  color: #0284c7;
+}
+
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media (max-width: 900px) {
+
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 34px;
+  }
+
+  .current-weather {
+    padding: 25px;
+  }
+
+  .current-header {
+    align-items: flex-start;
+  }
+
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+
+  .temperature {
+    font-size: 60px;
+  }
+
+}
+/* ============================= */
+/* ESTADÍSTICAS                  */
+/* ============================= */
+
+.stats-section {
+  margin-top: 30px;
+}
+
+.stats-section h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.stat-card {
+  position: relative;
+
+  padding: 22px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  border: 1px solid #e7edf5;
+
+  box-shadow:
+    0 6px 20px rgba(16, 24, 40, 0.06);
+
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 5px;
+  height: 100%;
+
+  background: #f97316;
+}
+
+.stat-card .detail-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card strong {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 30px;
+
+  color: #101828;
+}
+/* ============================= */
+/* GRÁFICAS                      */
+/* ============================= */
+
+.chart-section {
+  margin-top: 30px;
+
+  padding: 28px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  border: 1px solid #e7edf5;
+
+  box-shadow:
+    0 8px 28px rgba(16, 24, 40, 0.06);
+}
+
+.chart-section h2 {
+  margin: 0 0 5px;
+
+  font-size: 22px;
+}
+
+.chart-section::after {
+  content: "";
+
+  display: block;
+
+  width: 45px;
+  height: 4px;
+
+  margin-top: -30px;
+  margin-bottom: 25px;
+
+  border-radius: 5px;
+
+  background: #f97316;
+}
+@media (max-width: 900px) {
+
+  .weather-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/* =========================================================
+   ESTADO METEOROLÓGICO ACTUAL
+   ========================================================= */
+
+.weather-condition {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 10px 0;
+}
+
+.weather-condition-icon {
+  font-size: 52px;
+  line-height: 1;
+}
+
+.weather-condition strong {
+  display: block;
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   FORECAST
+   ========================================================= */
+
+.forecast-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.forecast-header h2 {
+  margin: 6px 0 0;
+}
+
+.forecast-location {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.forecast-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.forecast-today {
+  border: 2px solid #f97316;
+}
+
+.forecast-day {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.forecast-icon {
+  font-size: 48px;
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.forecast-condition {
+  font-size: 14px;
+  opacity: 0.7;
+  min-height: 20px;
+}
+
+.forecast-temperature {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.forecast-details {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+
+/* =========================================================
+   RESPONSIVE FORECAST
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .forecast-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .forecast-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================================================
+   FORECAST
+   ========================================================= */
+
+.forecast-section {
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.forecast-header h2 {
+  margin: 6px 0 4px;
+}
+
+.forecast-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.forecast-location {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ESTADO DEL MODELO
+   ========================================================= */
+
+.forecast-model-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 18px;
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.forecast-model-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 22px;
+}
+
+.forecast-model-status > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.forecast-model-status strong {
+  font-size: 15px;
+}
+
+.forecast-model-status span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.forecast-model-badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #fff7ed;
+  color: #ea580c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TARJETAS FORECAST
+   ========================================================= */
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.forecast-card {
+  min-height: 260px;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.forecast-today {
+  border: 2px solid #f97316;
+}
+
+.forecast-pending {
+  background: #f8fafc;
+}
+
+.forecast-day {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.forecast-icon {
+  font-size: 48px;
+  margin: 12px 0;
+}
+
+.forecast-condition {
+  min-height: 22px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.forecast-temperature {
+  margin: 12px 0;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.forecast-details {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.forecast-real {
+  margin-top: 15px;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.forecast-pending .forecast-icon {
+  opacity: 0.65;
+}
+
+.forecast-pending .forecast-temperature {
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL PREDICTOR
+   ========================================================= */
+
+.forecast-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.forecast-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.forecast-info-icon {
+  font-size: 22px;
+}
+
+.forecast-info-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.forecast-info-item strong {
+  font-size: 14px;
+}
+
+.forecast-info-item span:last-child {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .forecast-info {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .forecast-section {
+    padding: 20px;
+  }
+
+  .forecast-header {
+    flex-direction: column;
+  }
+
+  .forecast-location {
+    white-space: normal;
+  }
+
+  .forecast-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-model-status {
+    align-items: flex-start;
+  }
+
+  .forecast-model-badge {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   LLUVIA - DISEÑO VISUAL
+========================================================= */
+
+.rain-section {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CABECERA
+========================================================= */
+
+.rain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.rain-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rain-title-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  background: rgba(59, 130, 246, 0.10);
+
+  box-shadow:
+    0 4px 12px rgba(59, 130, 246, 0.10);
+}
+
+.rain-title h2 {
+  margin: 4px 0 0;
+  text-transform: capitalize;
+}
+
+
+/* =========================================================
+   SELECTORES
+========================================================= */
+
+.rain-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.rain-selector select {
+  appearance: none;
+
+  padding: 10px 36px 10px 14px;
+
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  border-radius: 10px;
+
+  background-color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rain-selector select:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.08);
+
+  transform: translateY(-1px);
+}
+
+.rain-selector select:focus {
+  outline: none;
+
+  border-color: rgba(59, 130, 246, 0.65);
+
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+
+/* =========================================================
+   RESUMEN DE LLUVIA
+========================================================= */
+
+.rain-summary {
+  position: relative;
+  z-index: 2;
+}
+
+.rain-summary strong {
+  font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   GRÁFICA
+========================================================= */
+
+.rain-chart {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   EFECTO DE GOTAS DE FONDO
+========================================================= */
+
+.rain-section::before,
+.rain-section::after {
+  content: "💧";
+
+  position: absolute;
+
+  font-size: 90px;
+
+  opacity: 0.035;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.rain-section::before {
+  right: 80px;
+  top: 110px;
+
+  transform: rotate(-15deg);
+}
+
+.rain-section::after {
+  right: 180px;
+  bottom: 50px;
+
+  font-size: 60px;
+
+  transform: rotate(15deg);
+}
+
+
+/* =========================================================
+   PEQUEÑAS GOTAS DECORATIVAS
+========================================================= */
+
+.rain-section .rain-chart::before {
+  content: "💧  💧  💧";
+
+  position: absolute;
+
+  right: 20px;
+  top: 5px;
+
+  font-size: 18px;
+
+  opacity: 0.10;
+
+  letter-spacing: 8px;
+
+  pointer-events: none;
+
+  animation: rainFloat 4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   ANIMACIÓN SUTIL
+========================================================= */
+
+@keyframes rainFloat {
+
+  0% {
+    transform: translateY(0);
+    opacity: 0.06;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.12;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.06;
+  }
+
+}
+
+
+/* =========================================================
+   PIE DE LA GRÁFICA
+========================================================= */
+
+.rain-footer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 15px;
+  padding: 12px 15px;
+
+  border-radius: 10px;
+
+  background: rgba(59, 130, 246, 0.05);
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.rain-footer-icon {
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .rain-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rain-selector {
+    width: 100%;
+  }
+
+  .rain-selector select {
+    flex: 1;
+  }
+
+}
+
+/* =========================================================
+   TEMPERATURA MENSUAL
+========================================================= */
+
+.temperature-monthly-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.temperature-monthly-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.temperature-monthly-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.temperature-monthly-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: rgba(249, 115, 22, 0.10);
+
+  font-size: 27px;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.temperature-monthly-title h2 {
+  margin: 4px 0 0;
+}
+
+.temperature-monthly-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.temperature-monthly-selector select {
+  padding: 10px 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.temperature-monthly-selector select:hover {
+  border-color: #cbd5e1;
+}
+
+.temperature-monthly-selector select:focus {
+  border-color: #f97316;
+
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+
+/* =========================================================
+   RESUMEN TEMPERATURA MENSUAL
+========================================================= */
+
+.temperature-monthly-summary {
+  margin-bottom: 25px;
+}
+
+.temperature-monthly-summary strong {
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   GRÁFICA
+========================================================= */
+
+.temperature-monthly-chart {
+  position: relative;
+  min-height: 350px;
+}
+
+
+/* =========================================================
+   ESTADO SIN DATOS
+========================================================= */
+
+.temperature-no-data {
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  gap: 8px;
+
+  color: #64748b;
+}
+
+.temperature-no-data-icon {
+  font-size: 42px;
+
+  margin-bottom: 5px;
+
+  opacity: 0.7;
+}
+
+.temperature-no-data strong {
+  font-size: 17px;
+
+  color: #334155;
+}
+
+.temperature-no-data span {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   LEYENDA
+========================================================= */
+
+.temperature-legend {
+  margin-top: 15px;
+
+  padding: 18px 20px;
+
+  border-radius: 14px;
+
+  background: rgba(248, 250, 252, 0.8);
+
+  border: 1px solid #e5e7eb;
+}
+
+.temperature-legend-title {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+
+  color: #64748b;
+
+  margin-bottom: 13px;
+}
+
+.temperature-legend-items {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px 20px;
+}
+
+.temperature-legend-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 13px;
+
+  color: #475569;
+}
+
+.temperature-legend-dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.temperature-monthly-footer {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 15px;
+
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  background: rgba(249, 115, 22, 0.06);
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.temperature-monthly-footer-icon {
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .temperature-monthly-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .temperature-monthly-selector {
+    width: 100%;
+  }
+
+  .temperature-monthly-selector select {
+    flex: 1;
+  }
+
+  .temperature-legend-items {
+    gap: 10px 15px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .temperature-monthly-title {
+    align-items: flex-start;
+  }
+
+  .temperature-monthly-icon {
+    width: 45px;
+    height: 45px;
+
+    font-size: 23px;
+  }
+
+  .temperature-monthly-selector {
+    flex-direction: column;
+  }
+
+  .temperature-monthly-selector select {
+    width: 100%;
+  }
+
+}
+
+.temperature-scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin-top: 20px;
+  padding: 0 5px;
+}
+
+.temperature-scale > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+}
+
+.temperature-scale-color {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   VIENTO
+   ========================================================= */
+
+.wind-section {
+  margin-top: 30px;
+}
+
+.wind-header {
+  margin-bottom: 24px;
+}
+
+.wind-header h2 {
+  margin-top: 6px;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.wind-dashboard {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+  gap: 16px;
+}
+
+
+/* =========================================================
+   VELOCIDAD ACTUAL
+   ========================================================= */
+
+.wind-main-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 24px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.wind-card-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #eff6ff;
+
+  font-size: 28px;
+}
+
+.wind-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.wind-card-content strong {
+  font-size: 23px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS
+   ========================================================= */
+
+.wind-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.wind-stat-card strong {
+  margin-top: 7px;
+
+  font-size: 23px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   DIRECCIÓN
+   ========================================================= */
+
+.wind-direction-card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.wind-direction-card > .detail-label {
+  align-self: flex-start;
+}
+
+
+/* =========================================================
+   BRÚJULA
+   ========================================================= */
+
+.wind-compass {
+  position: relative;
+
+  width: 125px;
+  height: 125px;
+
+  margin: 10px auto 5px;
+
+  border: 2px solid #e5e7eb;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #f9fafb 0%,
+      #ffffff 70%
+    );
+
+  box-shadow:
+    inset 0 0 0 8px #f9fafb;
+}
+
+
+/* Puntos cardinales */
+
+.compass-n,
+.compass-e,
+.compass-s,
+.compass-w {
+  position: absolute;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #6b7280;
+}
+
+.compass-n {
+  top: 8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.compass-e {
+  right: 10px;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.compass-s {
+  bottom: 8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.compass-w {
+  left: 10px;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+
+/* =========================================================
+   FLECHA
+   ========================================================= */
+
+.compass-arrow {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: -17px;
+  margin-top: -17px;
+
+  font-size: 31px;
+
+  font-weight: 700;
+
+  color: #3b82f6;
+
+  transform-origin: center center;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* =========================================================
+   VALOR DIRECCIÓN
+   ========================================================= */
+
+.wind-direction-value {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+
+/* =========================================================
+   INFORMACIÓN
+   ========================================================= */
+
+.wind-info {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  background: #f9fafb;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.wind-info-icon {
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .wind-dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .wind-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .wind-main-card,
+  .wind-stat-card,
+  .wind-direction-card {
+    min-height: 120px;
+  }
+
+}
+
+/* =========================================================
+   ROSA DE LOS VIENTOS
+   ========================================================= */
+
+.wind-rose-card {
+  grid-column: span 1;
+
+  padding: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.wind-rose-header {
+  margin-bottom: 10px;
+}
+
+.wind-rose-header strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.wind-rose-content {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+/* =========================================================
+   ROSA
+   ========================================================= */
+
+.wind-rose {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.wind-rose-circle {
+  position: relative;
+
+  width: 165px;
+  height: 165px;
+
+  border: 2px solid #e5e7eb;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ffffff 0%,
+      #f9fafb 70%
+    );
+
+  box-shadow:
+    inset 0 0 0 8px #f9fafb;
+}
+
+
+/* =========================================================
+   DIRECCIONES
+   ========================================================= */
+
+.wind-rose-label {
+  position: absolute;
+
+  z-index: 3;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #6b7280;
+}
+
+.wind-rose-n {
+  top: 8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.wind-rose-ne {
+  top: 22px;
+  right: 23px;
+}
+
+.wind-rose-e {
+  top: 50%;
+  right: 9px;
+
+  transform: translateY(-50%);
+}
+
+.wind-rose-se {
+  bottom: 22px;
+  right: 23px;
+}
+
+.wind-rose-s {
+  bottom: 8px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.wind-rose-so {
+  bottom: 22px;
+  left: 23px;
+}
+
+.wind-rose-o {
+  top: 50%;
+  left: 9px;
+
+  transform: translateY(-50%);
+}
+
+.wind-rose-no {
+  top: 22px;
+  left: 23px;
+}
+
+
+/* =========================================================
+   RAYOS DE LA ROSA DE LOS VIENTOS
+   ========================================================= */
+
+.wind-rose-ray {
+
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  bottom: 50%;
+
+  width: 8px;
+
+  border-radius: 8px;
+
+  background: #3b82f6;
+
+  transform-origin: center bottom;
+
+  opacity: 0.65;
+
+  transition:
+    height 0.4s ease,
+    opacity 0.3s ease;
+
+  box-shadow:
+    0 0 4px rgba(59, 130, 246, 0.15);
+
+}
+
+.wind-rose-ray:hover {
+
+  opacity: 0.9;
+
+}
+
+
+/* =========================================================
+   CENTRO
+   ========================================================= */
+
+.wind-rose-center {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 50%;
+  left: 50%;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 2px solid #e5e7eb;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   LEYENDA
+   ========================================================= */
+
+.wind-rose-legend {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 7px 14px;
+
+  min-width: 100px;
+}
+
+.wind-rose-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  color: #6b7280;
+}
+
+.wind-rose-item strong {
+  color: #111827;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .wind-rose-card {
+    grid-column: span 2;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .wind-rose-card {
+    grid-column: span 1;
+  }
+
+  .wind-rose-content {
+    flex-direction: column;
+  }
+
+}
+
+/* =========================================================
+   ROSA SIN DATOS
+   ========================================================= */
+
+.wind-rose-no-data {
+
+  position: absolute;
+
+  z-index: 2;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 3px;
+
+  color: #9ca3af;
+
+  pointer-events: none;
+
+}
+
+.wind-rose-no-data span {
+
+  font-size: 22px;
+
+  opacity: 0.65;
+
+}
+
+.wind-rose-no-data small {
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+}
+
+/* =========================================================
+   CONSULTA HISTÓRICA
+   ========================================================= */
+
+.historical-section {
+  margin-top: 30px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.historical-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.historical-header h2 {
+  margin: 6px 0 8px;
+}
+
+.historical-description {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.historical-header-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f3f4f6;
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   BUSCADOR
+   ========================================================= */
+
+.historical-search {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 20px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.historical-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.historical-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.historical-field input {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.historical-field input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+
+/* =========================================================
+   BOTÓN
+   ========================================================= */
+
+.historical-search-button {
+  height: 42px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.historical-search-button:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.historical-search-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.historical-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 13px 15px;
+  border: 1px solid #fecaca;
+  border-radius: 9px;
+  background: #fef2f2;
+  color: #991b1b;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   RESULTADO
+   ========================================================= */
+
+.historical-result {
+  margin-top: 22px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.historical-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.historical-result-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.historical-result-header strong {
+  font-size: 15px;
+  color: #111827;
+  text-transform: capitalize;
+}
+
+.historical-result-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   MÉTRICAS
+   ========================================================= */
+
+.historical-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #e5e7eb;
+}
+
+.historical-metric {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 80px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.historical-metric-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #f3f4f6;
+  font-size: 17px;
+}
+
+.historical-metric > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.historical-metric span {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.historical-metric strong {
+  color: #111827;
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   FOOTER DEL RESULTADO
+   ========================================================= */
+
+.historical-result-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 16px;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .historical-search {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .historical-field input {
+    width: 100%;
+  }
+
+  .historical-search-button {
+    width: 100%;
+  }
+
+  .historical-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .historical-section {
+    padding: 20px;
+  }
+
+  .historical-header {
+    align-items: flex-start;
+  }
+
+  .historical-header-icon {
+    display: none;
+  }
+
+  .historical-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .historical-result-header {
+    align-items: flex-start;
+  }
+
+}
+
+/* =========================================================
+   MAPA DE LA ESTACIÓN
+   ========================================================= */
+
+.station-map-section {
+    margin-top: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.station-map-section .section-header {
+    margin-bottom: 18px;
+}
+
+.station-map-section .section-header h2 {
+    margin: 0 0 6px 0;
+}
+
+.station-map-section .section-header p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.station-map-container {
+    width: 100%;
+    height: 420px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.station-map {
+    width: 100%;
+    height: 100%;
+}
+
+.station-map-loading,
+.station-map-error {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.station-popup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+}
+
+.station-popup strong {
+    font-size: 15px;
+}
+
+.station-popup span {
+    color: #4b5563;
+}
+
+.station-popup small {
+    color: #6b7280;
+}
+/* =========================================================
+   HISTÓRICO — MEJORA DE INTERFAZ
+   ========================================================= */
+
+.historical-search-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.historical-search-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.historical-search-title-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 17px;
+}
+
+.historical-search-title > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.historical-search-title strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.historical-search-title span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.historical-search {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(150px, 0.8fr) auto;
+  align-items: end;
+  gap: 14px;
+  margin-top: 0;
+}
+
+.historical-field input {
+  width: 100%;
+}
+
+.historical-search-button {
+  min-width: 170px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.historical-presets {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.historical-presets > span {
+  margin-right: 3px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.historical-presets button {
+  padding: 7px 11px;
+  border: 1px solid #dbe2ea;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #475569;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.historical-presets button:hover {
+  border-color: #94a3b8;
+  background: #f1f5f9;
+  color: #111827;
+  transform: translateY(-1px);
+}
+
+.historical-result-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.historical-result-status .historical-result-icon {
+  width: 34px;
+  height: 34px;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+  font-size: 16px;
+}
+
+.historical-result {
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+}
+
+.historical-result-header {
+  padding: 18px 20px;
+}
+
+.historical-result-header strong {
+  line-height: 1.45;
+}
+
+@media (max-width: 800px) {
+  .historical-search {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .historical-search-button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .historical-search-panel {
+    padding: 16px;
+  }
+
+  .historical-search {
+    grid-template-columns: 1fr;
+  }
+
+  .historical-search-button {
+    grid-column: auto;
+  }
+
+  .historical-result-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .historical-result-status {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .historical-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .historical-presets {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .historical-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS GENERALES — FASE 1
+   ========================================================= */
+
+.general-stats-section {
+  margin-top: 32px;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e1eaf0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+.general-stats-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.general-stats-header h2 {
+  margin: 4px 0 5px;
+  color: #0f172a;
+}
+
+.general-stats-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.section-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0f4c81;
+}
+
+.stats-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stats-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.general-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.general-stat-card {
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.general-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.09);
+}
+
+.general-stat-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.general-stat-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 18px;
+}
+
+.general-stat-label {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.general-stat-card strong {
+  margin: 12px 0 4px;
+  color: #0f4c81;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.general-stat-description {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.featured-stat {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  border-color: #cfe2f3;
+}
+
+.current-stat-card {
+  background: #f8fafc;
+}
+
+.general-stats-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.general-stats-footer p {
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .general-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .general-stats-section {
+    padding: 20px;
+  }
+
+  .general-stats-header {
+    flex-direction: column;
+  }
+
+  .general-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   RESUMEN DE COMPORTAMIENTO RECIENTE — FASE 1
+   ========================================================= */
+
+.recent-summary-section {
+  margin-top: 32px;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e1eaf0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+.recent-summary-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.recent-summary-header h2 {
+  margin: 4px 0 5px;
+  color: #0f172a;
+}
+
+.recent-summary-header p {
+  margin: 0;
+  max-width: 680px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.recent-summary-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.recent-summary-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.recent-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.recent-summary-card {
+  min-height: 132px;
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.recent-summary-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.09);
+}
+
+.recent-summary-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.recent-summary-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 17px;
+}
+
+.recent-summary-card strong {
+  margin: 10px 0 3px;
+  color: #0f4c81;
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+.recent-summary-card small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.recent-summary-trend-card {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  border-color: #cfe2f3;
+}
+
+.recent-summary-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.recent-summary-footer p {
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .recent-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .recent-summary-section {
+    padding: 20px;
+  }
+
+  .recent-summary-header {
+    flex-direction: column;
+  }
+
+  .recent-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   PRECIPITACIÓN — ANÁLISIS FASE 1
+   ========================================================= */
+
+.rain-section {
+  overflow: hidden;
+}
+
+.rain-subtitle {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.rain-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 22px 0 26px;
+}
+
+.rain-metric-card {
+  min-height: 132px;
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.rain-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.09);
+}
+
+.rain-total-card {
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+  border-color: #cfe2f3;
+}
+
+.rain-metric-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.rain-metric-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 17px;
+}
+
+.rain-metric-card strong {
+  margin: 10px 0 3px;
+  color: #0f4c81;
+  font-size: 27px;
+  line-height: 1.1;
+}
+
+.rain-metric-card small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.rain-chart-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 4px 0 10px;
+}
+
+.rain-chart-heading h3 {
+  margin: 0 0 4px;
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.rain-chart-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.rain-highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 9px 12px;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 11px;
+  text-align: right;
+}
+
+.rain-highlight strong {
+  color: #0f4c81;
+  font-size: 12px;
+}
+
+.rain-empty-state {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #64748b;
+  text-align: center;
+}
+
+.rain-empty-state span {
+  font-size: 30px;
+}
+
+.rain-empty-state strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.rain-empty-state p {
+  margin: 0;
+  font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+  .rain-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .rain-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rain-chart-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .rain-highlight {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .rain-metric-card strong {
+    font-size: 25px;
+  }
+}
+
+
+/* =========================================================
+   TEMPERATURA MENSUAL — MEJORA FASE 1
+   ========================================================= */
+
+.temperature-monthly-description {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.temperature-monthly-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.temperature-monthly-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 18px;
+}
+
+.temperature-summary-card {
+  min-height: 125px;
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.temperature-summary-card span {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.temperature-summary-card strong {
+  margin: 8px 0 4px;
+  color: #0f4c81;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.temperature-summary-card small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.temperature-summary-card.cold {
+  background: #f8fbff;
+  border-color: #dbeafe;
+}
+
+.temperature-summary-card.cold strong {
+  color: #2563eb;
+}
+
+.temperature-summary-card.hot {
+  background: #fffaf5;
+  border-color: #fed7aa;
+}
+
+.temperature-summary-card.hot strong {
+  color: #ea580c;
+}
+
+.temperature-summary-card.range {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+}
+
+.temperature-summary-card.range strong {
+  color: #7c3aed;
+}
+
+.temperature-extremes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.temperature-extremes > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.temperature-extremes span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.temperature-extremes strong {
+  color: #1e293b;
+  font-size: 13px;
+  text-align: right;
+}
+
+.temperature-scale {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  gap: 9px 16px !important;
+  align-items: center !important;
+  margin-top: 14px !important;
+  margin-bottom: 15px !important;
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.temperature-scale > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.temperature-scale-color {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+}
+
+.temperature-scale-color.very-hot { background: #7f1d1d; }
+.temperature-scale-color.hot { background: #ef4444; }
+.temperature-scale-color.warm { background: #f97316; }
+.temperature-scale-color.mild { background: #22c55e; }
+.temperature-scale-color.cool { background: #14b8a6; }
+.temperature-scale-color.cold { background: #3b82f6; }
+.temperature-scale-color.freezing { background: #8b5cf6; }
+
+@media (max-width: 850px) {
+  .temperature-monthly-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .temperature-monthly-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .temperature-monthly-selector {
+    width: 100%;
+  }
+
+  .temperature-monthly-selector select {
+    flex: 1;
+  }
+
+  .temperature-monthly-summary,
+  .temperature-extremes {
+    grid-template-columns: 1fr;
+  }
+
+  .temperature-extremes > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .temperature-extremes strong {
+    text-align: left;
+  }
+}
+
+
+/* =========================================================
+   ANÁLISIS DEL VIENTO — FASE 1
+   ========================================================= */
+
+.wind-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.wind-header {
+  margin-bottom: 22px;
+}
+
+.wind-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.wind-title-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: rgba(59, 130, 246, 0.10);
+  border: 1px solid rgba(59, 130, 246, 0.10);
+  font-size: 27px;
+}
+
+.wind-title h2 {
+  margin: 4px 0 4px;
+}
+
+.wind-subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================================
+   MÉTRICAS
+   ========================================================= */
+
+.wind-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.wind-metric-card {
+  min-height: 142px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.wind-metric-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.09);
+}
+
+.wind-current-card {
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border-color: #dbeafe;
+}
+
+.wind-gust-card {
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+}
+
+.wind-metric-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wind-metric-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 18px;
+}
+
+.wind-metric-top > span:last-child {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wind-metric-card > strong {
+  margin: 12px 0 4px;
+  color: #0f4c81;
+  font-size: 27px;
+  line-height: 1.1;
+}
+
+.wind-direction-highlight {
+  font-size: 30px !important;
+  letter-spacing: 0.02em;
+}
+
+.wind-metric-card small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* =========================================================
+   ROSA DE LOS VIENTOS
+   ========================================================= */
+
+.wind-rose-card {
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.wind-rose-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.wind-rose-header strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.wind-predominant-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+}
+
+.wind-predominant-badge span {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.wind-predominant-badge strong {
+  margin: 0;
+  color: #1d4ed8;
+  font-size: 13px;
+}
+
+.wind-analysis-footer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.wind-analysis-footer p {
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .wind-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .wind-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wind-title {
+    align-items: flex-start;
+  }
+
+  .wind-rose-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wind-predominant-badge {
+    width: fit-content;
+  }
+}
+
+
+/* =========================================================
+   TENDENCIAS METEOROLÓGICAS — FASE 1
+   ========================================================= */
+
+.trends-section {
+  margin-top: 30px;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e1eaf0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+}
+
+.trends-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.trends-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.trends-title-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: rgba(59, 130, 246, 0.10);
+  font-size: 27px;
+}
+
+.trends-title h2 {
+  margin: 4px 0 5px;
+  color: #0f172a;
+}
+
+.trends-title p {
+  margin: 0;
+  max-width: 700px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.trends-period-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.trends-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.trend-card {
+  min-height: 205px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.trend-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 76, 129, 0.09);
+}
+
+.trend-card.trend-up {
+  border-color: #bfdbfe;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
+.trend-card.trend-down {
+  border-color: #dbeafe;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+}
+
+.trend-card.trend-stable {
+  border-color: #e2e8f0;
+}
+
+.trend-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trend-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 17px;
+}
+
+.trend-card-name {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.trend-main {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.trend-main-icon {
+  font-size: 23px;
+}
+
+.trend-main strong {
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.trend-change {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.trend-change span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.trend-change strong {
+  color: #0f4c81;
+  font-size: 16px;
+}
+
+.trend-card small {
+  margin-top: auto;
+  padding-top: 13px;
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.trends-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+}
+
+.trends-summary-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  font-size: 18px;
+}
+
+.trends-summary strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.trends-summary p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.trends-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.trends-footer p {
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .trends-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .trends-section {
+    padding: 20px;
+  }
+
+  .trends-header {
+    flex-direction: column;
+  }
+
+  .trends-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trends-period-badge {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .trends-title {
+    align-items: flex-start;
+  }
+
+  .trends-title-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 23px;
+  }
+}
+/* =========================================================
+   SELECTOR MAPA / SATÉLITE
+   ========================================================= */
+
+.station-map-container {
+    position: relative;
+}
+
+.station-map-switcher {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 1000;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.station-map-switch {
+    border: none;
+    background: transparent;
+    color: #4b5563;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.station-map-switch:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.station-map-switch.active {
+    background: #111827;
+    color: #ffffff;
+}
+
+.station-map-switch.active:hover {
+    background: #1f2937;
+}
+
+@media (max-width: 600px) {
+    .station-map-switcher {
+        top: 10px;
+        right: 10px;
+    }
+
+    .station-map-switch {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+}
