@@ -106,6 +106,8 @@ La aplicación permite buscar mediciones concretas dentro del histórico almacen
 
 MeteoInsight calcula diferentes estadísticas a partir de las observaciones almacenadas, incluyendo:
 
+![alt text](docs/screenshots/graficas.png)
+
 Temperatura mínima
 Temperatura máxima
 Temperatura media
@@ -123,6 +125,8 @@ Media de precipitación en días con lluvia
 Día con mayor precipitación
 Temperatura
 
+![alt text](docs/screenshots/lluvia.png)
+
 El análisis de temperatura permite consultar:
 
 Media mensual
@@ -133,6 +137,8 @@ Días con temperaturas iguales o superiores a 30 °C
 Día más frío
 Día más cálido
 Viento
+
+![alt text](docs/screenshots/temperatura.png)
 
 El dashboard incorpora información sobre:
 
@@ -154,7 +160,11 @@ La aplicación incorpora una previsión meteorológica de varios días utilizand
 
 La arquitectura está preparada para incorporar posteriormente modelos propios de predicción basados en el histórico almacenado.
 
+![alt text](docs/screenshots/prevision.png)
+
 # Mapa de la estación
+
+![alt text](<docs/screenshots/Captura de pantalla 2026-09-22 132744.png>)
 
 La ubicación de la estación se muestra mediante un mapa interactivo desarrollado con Leaflet.
 
